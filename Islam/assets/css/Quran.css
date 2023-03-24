@@ -1,0 +1,924 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background-color: inherit;
+  padding: 0 20px;
+}
+
+i.fa-bars,
+i.fa-envelope {
+  color: #63ff69;
+  font-size: 24px;
+}
+
+.hamburger {
+  cursor: pointer;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 10% 0;
+}
+
+.overlay a {
+  font-size: 36px;
+  color: #f2f2f2;
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #ddd;
+}
+
+.closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  color: #f2f2f2;
+}
+
+.closebtn:hover,
+.closebtn:focus {
+  color: #ddd;
+  cursor: pointer;
+}
+
+.titles {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+}
+
+.titles h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+
+
+.titles h2#hiding {
+  font-size: 16px;
+  margin: 0;
+  margin-top: 20px;
+}
+@media screen and (max-width: 768px) {
+  h2#hiding {
+    display: none;
+  }
+}
+
+.overlay-content a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  margin: 10px;
+  animation: bounce 1s ease-in-out infinite;
+  text-decoration: none;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.overlay-content a:hover {
+  animation: none;
+  transform: translateY(-10px) scale(1.2);
+}
+
+/*.custom-button {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--secondary-color);
+  background-color: #63ff69;
+  border: none;
+  border-radius: 25px;
+  padding: 15px 30px;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7), 0px 0px 20px rgba(255, 255, 255, 0.7), 10px 10px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+}
+
+.custom-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.3),
+    -15px -15px 30px rgba(255, 255, 255, 0.6);
+} */
+
+.quran-player-section body {
+  transition: all 0.3s ease-in-out;
+}
+#image-wrapper {
+  display: inline-block; /* or block, depending on your layout */
+  /* set the height to the desired size */
+}
+:root {
+  --background: #141414;
+  --text-color: #fff;
+  --primary-color: #63ff69;
+  --secondary-color: #000;
+  --alpha-color: rgba(0, 0, 0, 0.5);
+  --shadow: 0 15px 40px var(--alpha-color);
+}
+
+html {
+  background: var(--background);
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  max-width: 375px;
+  position: relative;
+  background: var(--background);
+  font-family: "roboto", sans-serif;
+  color: var(--text-color);
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* custom scrollbar */
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #63ff69;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+.playlists-group {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  height: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.playlists-group::-webkit-scrollbar {
+  width: 20px;
+}
+
+.playlists-group::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.playlists-group::-webkit-scrollbar-thumb {
+  background-color: #63ff69;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+.playlists-group::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+/* home section */
+video{
+  filter:grayscale(100%);
+}
+.quran-player-section {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: var(--alpha-color);
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  transition: 1s;
+  overflow-y: visible;
+  overflow-x: hidden;
+  z-index: 999;
+}
+
+.quran-seek-bar {
+  -webkit-appearance: none;
+  width: 100%;
+  position: absolute;
+  top: -4px;
+  height: 8px;
+  background: var(--secondary-color);
+  overflow: hidden;
+}
+
+.quran-seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 6px;
+  width: 6px;
+  background: var(--primary-color);
+  cursor: pointer;
+  box-shadow: -400px 0 0 400px var(--primary-color);
+  pointer-events: none;
+}
+.quran-player-section.active .quran-seek-bar {
+  position: relative;
+  display: block;
+  border-radius: 50px;
+  margin: auto;
+}
+
+span.fa-redo,
+i.fa-forward-step,
+i.fa-backward-step,
+i.fa-pause,
+i.fa-play {
+  cursor: pointer;
+}
+
+span.fa-volume-up,
+span.fa-repeat {
+  cursor: pointer;
+}
+
+#feelings-dropdown {
+  display: inline-block;
+  background: var(--primary-color);
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: var(--secondary-color);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: capitalize;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#feelings-dropdown option {
+  text-align: center;
+}
+.home-section {
+  width: 100%;
+  padding: 20px;
+  height: auto;
+  padding-bottom: 100px;
+  overflow-y: auto;
+}
+
+/* carousel */
+
+
+.carousel img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  visibility: hidden;
+  transition: 1s;
+}
+
+.carousel img.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.heading {
+  margin: 30px 0 10px;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 30px;
+}
+
+/* playlists card */
+
+.playlist-card {
+  flex: 0 0 auto;
+  width: 175px;
+  height: 100%;
+  margin-right: 20px;
+}
+
+.playlist-card-img {
+  width: 100%;
+  height: 175;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.playlist-card-name {
+  width: 100%;
+  text-align: justify;
+  font-size: 20px;
+  text-transform: capitalize;
+  padding: 5px;
+}
+
+@media screen and (min-width: 1080px) {
+  .playlist-card {
+    width: 200px;
+  }
+  .playlist-card-img {
+    height: 200px;
+  }
+}
+
+* quran player */
+
+/* minimize view */
+
+
+
+
+
+
+
+.quran-container {
+  display: none;
+  /* add other styles here */
+}
+
+.quran-container.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.quran-container {
+  display: none;
+}
+
+.quran-player-section .hide {
+  display: none;
+  opacity: 0;
+  transition: 1s;
+}
+
+.quran-player-section.active .hide {
+  display: block;
+  opacity: 1;
+}
+
+.quran-player-section.active {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+body.quran-player-active {
+  overflow: hidden;
+}
+
+.creative-button {
+  border: none;
+  border-radius: 10px;
+  padding: 15px 30px;
+  background-color: #0077ff;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.creative-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #ffffff;
+  opacity: 0.3;
+  transition: height 0.3s ease-out;
+}
+
+.creative-button:hover::before {
+  height: 100%;
+}
+
+.artist-name {
+  text-align: center;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+hr {
+  margin-top: 20px;
+}
+
+/* Styles for devices with a width of 992px or more */
+@media (min-width: 992px) {
+  .container-quran {
+    height: 100%;
+  }
+}
+
+/* Styles for devices with a width of 1200px or more */
+@media (min-width: 1200px) {
+  .container-quran {
+    height: 100%;
+  }
+}
+
+
+
+
+
+.swiper-container {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  overflow: hidden; /* hide overflow of the container */
+  flex-direction: column;
+  z-index: 1;
+  
+}
+.swiper-wrapper {
+  height: 100%;
+  display: flex;
+}
+.swiper-slide {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* hide overflow of the slide */
+}
+.swiper-slide video {
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
+video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
+
+video::-webkit-media-controls-panel {
+  width: calc(100% - 30px); /* Adjust as needed */
+}
+video::-webkit-media-controls-enclosure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+video::-webkit-media-controls {
+  display:none !important;
+}
+video::-webkit-media-controls-play-button {
+  display:block !important;
+}
+/*
+
+
+.container-quran {
+  width: 100%;
+  height: auto;
+  word-break: break-word;
+  hyphens: auto;
+  position: relative;
+  margin: auto;
+  z-index: 1;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  background-color: hsla(135, 100%, 60%, 0.3);
+  border-radius: var(--bd-radius);
+  border: 2px solid hsla(135, 100%, 60%, 0.5);
+  box-shadow: 5px 5px 30px hsla(0, 0%, 0%, 0.3);
+  margin-top: 20px;
+}
+*/
+#tester {
+  word-break: break-word;
+  hyphens: auto;
+  position: static;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  background-color: hsla(135, 100%, 60%, 0.3);
+  border-radius: var(--bd-radius);
+  border: 2px solid hsla(135, 100%, 60%, 0.5);
+  box-shadow: 5px 5px 30px hsla(0, 0%, 0%, 0.3);
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  bottom: 50px;
+  padding: 10px;
+  z-index: 2;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 992px) {
+  .container-quran {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.container-quran:not(.active) {
+  margin-top: 20px;
+}
+@media only screen and (max-width: 767px) {
+  .titles {
+    width: 75%;
+  }
+  #tester {
+    bottom: 120px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .titles {
+    width: 75%;
+  }
+  #tester {
+    bottom: 120px;
+  }
+
+}
+.player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.cover {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+  filter: invert(1);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Styles for devices with a width of 768px or more */
+@media (min-width: 768px) {
+  .cover {
+    width: 100%;
+    max-height: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Styles for devices with a width of 992px or more */
+@media (min-width: 992px) {
+  .cover {
+    width: 60%;
+    max-height: 70%;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Styles for devices with a width of 1200px or more */
+@media (min-width: 1200px) {
+  .cover {
+    width: 50%;
+    max-height: 60%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.hide-elements *:not(.quran-player-section):not(.quran-player-section *) {
+  display: none;
+}
+
+.controls {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 30px;
+}
+
+.quran-player-section.active .controls {
+  margin-top: 20px;
+}
+
+.controls span {
+  display: none;
+  opacity: 0;
+  transition: 1s;
+}
+.quran-player-section.active .controls {
+  justify-content: space-between;
+}
+
+.quran-player-section.active .controls span {
+  font-size: 25px;
+  display: block;
+  opacity: 0.5;
+}
+
+.quran-player-section.active .controls span.active {
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+.controls .main i {
+  margin: 0 5px;
+  display: none;
+}
+
+.controls .main i.active {
+  display: inline;
+}
+
+.current-time {
+  position: absolute;
+  margin-top: 5px;
+  left: 30px;
+}
+
+.duration {
+  position: absolute;
+  margin-top: 5px;
+  right: 30px;
+}
+
+.icon {
+  position: absolute;
+  top: 60px;
+  transform: scale(1.3);
+}
+
+.back-btn {
+  cursor: pointer;
+}
+
+.nav-btn {
+  right: 40px;
+  cursor: pointer;
+}
+
+/* volume button */
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  right: -35px;
+  bottom: 80px;
+  transform: rotate(-90deg);
+  border-radius: 20px;
+  background: var(--alpha-color);
+  overflow: hidden;
+  opacity: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.volume-slider.active {
+  opacity: 1;
+  display: block;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 40px;
+  width: 10px;
+  background: var(--primary-color);
+  box-shadow: -200px 0 1px 200px var(--primary-color);
+}
+
+.playlist {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  padding: 30px 0;
+  background: var(--background);
+  z-index: 3;
+  transition: 1s;
+  overflow: auto;
+  z-index: 10000;
+}
+
+
+.carousel {
+  width: 100%;
+  height: 60px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.container {
+  text-align: center;
+  color: white;
+  justify-content: center; /* centers items horizontally */
+  align-items: center; /* centers items vertically */
+  text-align: center;
+  overflow: hidden;
+
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+
+}
+
+li {
+  margin-right: 20px;
+  margin-bottom: 10px;
+  flex: 1 0 100%; /* fallback for browsers that do not support calc() */
+  flex-basis: calc(33.33% - 20px);
+  max-width: calc(33.33% - 20px);
+}
+
+@media screen and (min-width: 480px) {
+  li {
+    flex-basis: calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  li {
+    flex: 0 0 calc(33.33% - 20px);
+    flex-basis: calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+  }
+}
+
+
+
+.play-button {
+  display: inline-block;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.containers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playlist.active {
+  right: 0;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 15px;
+  text-transform: capitalize;
+  margin-bottom: 30px;
+}
+
+.queue {
+  width: 100%;
+  height: 80px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  border-top: 2px solid var(--primary-color);
+}
+
+.queue-cover {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 20px;
+  position: relative;
+}
+
+.queue-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.queue .name {
+  font-size: 22px;
+  text-transform: capitalize;
+  flex: 1;
+}
+.queue-cover i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: var(--primary-color);
+  display: none;
+}
+
+.queue.active i {
+  display: block;
+}
+
+.quran-player-section select#feelings-dropdown {
+  display: none;
+}
+
+.quran-player-section.active select#feelings-dropdown {
+  display: block;
+}
+
+.quran-who {
+  font-weight: 300;
+  text-align: center;
+  margin-top: 5px;
+  text-transform: capitalize;
+}

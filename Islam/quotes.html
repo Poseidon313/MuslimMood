@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Muslim Mood | Quotes Generator</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="navbar">
+            <div class="titles">
+                <h1 style="margin-top: 25px;">MuslimMood</h1>
+                <h2>Quotes Generator</h2>
+            </div>
+            <div class="hamburger" onclick="openNav()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a href="./">Quranic Player</a>
+                    <a href="quotes.html">Quotes Generator</a>
+                    <a href="#">Coming Soon...</a>
+                    <a href="#">Coming Soon...</a>
+                </div>
+            </div>
+            <a href="mailto:jawad.aa421@gmail.com
+" target="_blank">
+                <div class="email">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+
+    <video id="video-background" autoplay muted loop>
+        <source src="assets/videos/background.mp4" type="video/mp4">
+        <source src="assets/videos/background copy.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+    <div id="overlay"></div>
+    <div id="content">
+        <h1 id="test">Salam</h1>
+        <p>Use this quote generator for inspiration and a push (Prototype #01)</p>
+        <div class="container">
+            <label for="feeling-choice">I'm Feeling:</label>
+            <select id="feeling-choice">
+                <option hidden>Select a feeling</option>
+                <option value="random">Random</option>
+                <option value="alone">Alone</option>
+                <option value="anxious">Anxious</option>
+                <option value="dua-parents">A Dua for My Parents</option>
+                <option value="dua-school">A Dua for School</option>
+                <option value="dua-wealth">A Dua for Rizq (Wealth)</option>
+                <option value="grieved">Grieved</option>
+                <option value="sad">Sad</option>
+                <option value="stressed">Stressed</option>
+                <option value="thankful">Thankful</option>
+                <option value="unsure">Unsure in Life</option>
+            </select>
+        </div>
+        <br>
+        <div id="image-container">
+            <img id="feeling-image" src="">
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/58c091b02c.js" crossorigin="anonymous"></script>
+
+    <script src="assets/js/scripts.js"></script>
+</body>
+
+</html>

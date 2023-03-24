@@ -1,0 +1,177 @@
+
+
+
+
+
+/* Media queries */
+@media only screen and (max-width: 768px) {
+  .custom-button {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .custom-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+      justify-content: space-between;
+  }
+
+  .hamburger {
+      display: flex;
+      align-items: center;
+  }
+
+  .overlay a {
+      font-size: 24px;
+  }
+
+  .closebtn {
+      font-size: 20rem;
+  }
+
+  .titles h1 {
+      font-size: 1px;
+  }
+
+  .titles h2 {
+      font-size: 14px;
+  }
+  .title{
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .overlay a {
+      font-size: 40px;
+  }
+
+  .closebtn {
+      font-size: 20rem;
+  }
+
+  .titles h1 {
+      font-size: 25px;
+  }
+
+  .titles h2 {
+      font-size: 20px;
+  }
+  
+}
+
+
+
+@media only screen and (min-width: 376px) {
+    body {
+      max-width: 768px;
+    }
+    .playlists-group {
+      padding: 0 10px;
+    }
+    .playlist-card {
+      margin-right: 10px;
+    }
+    .carousel {
+      height: 300px;
+    }
+    .carousel img {
+      transition: none;
+      opacity: 1;
+    }
+  }
+  
+
+
+  @media screen and (max-width: 768px) {
+    .menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: #000;
+      z-index: 999;
+      overflow-y: auto;
+      padding: 20px;
+    }
+  
+    .menu-icon {
+      display: block;
+    }
+  
+    .menu-icon i {
+      color: #fff;
+      font-size: 30px;
+    }
+  
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      color: #fff;
+    }
+  
+    .menu ul {
+      align-items: center;
+    }
+  
+    .menu ul li {
+      margin: 20px 0;
+    }
+  
+    .menu ul li a {
+      font-size: 24px;
+    }
+  }
+
+  /* For screens smaller than 375px */
+  @media only screen and (max-width: 375px) {
+    body {
+      max-width: 100%;
+    }
+    .heading {
+      font-size: 24px;
+    }
+    .playlists-group {
+      padding: 0 5px;
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    .playlist-card {
+      margin-right: 5px;
+      max-width: 120px;
+    }
+    .playlist-card-img {
+      height: 120px;
+    }
+    .playlist-card-name {
+      font-size: 16px;
+    }
+    .carousel {
+      height: 250px;
+    }
+    .controls {
+      height: 50px;
+      font-size: 24px;
+    }
+  
+    .music-player-section {
+      height: 80px;
+      padding: 20px;
+    }
+    .current-quran-name {
+      font-size: 16px;
+    }
+  }
+  
+
+

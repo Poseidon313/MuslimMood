@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muslim Mood | Quranic Player</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/Quran.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="titles">
+                <h1 style="margin-top: 25px;">MuslimMood</h1>
+                <h2>Quranic Player</h2>
+            </div>
+            <div class="hamburger" onclick="openNav()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a href="./">Quranic Player</a>
+                    <a href="quotes.html">Quotes Generator</a>
+
+                    <a href="#">Coming Soon...</a>
+                    <a href="#">Coming Soon...</a>
+                </div>
+            </div>
+            <a href="mailto:jawad.aa421@gmail.com
+" target="_blank">
+                <div class="email">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+            </a>
+        </div>
+    </nav>
+    <audio src="" id="audio-source"></audio>
+
+
+
+
+
+    <section class="home-section">
+        <!-- carousel -->
+        <p style="text-align: center; margin-bottom: 20px;">In loving memory of Omar Al-Khalidi. One thing that is universally agreed to benefit the dead is
+            to pray for them, appealing to God to forgive them and bestow His mercy on them. The evidence for this is
+            the Qur’anic verse that says: “Those who come after them say: ‘Our Lord! Forgive us our sins, as well as
+            those of our brethren who preceded us in faith, and let not our hearts entertain any unworthy thoughts or
+            feelings against any believers. Our Lord! You are truly compassionate, merciful.” (59: 10)</h>
+        <p style="text-align: center; margin-bottom: 20px;">Please Recite Al-Fatihah for the following names:</p>
+        <p style="text-align: center; margin-bottom: 20px;">(Name Requests will be taken via Email in the top right corner)</p>
+
+        <div class="carousel">
+            <div class="container">
+                <ul>
+                    <li>Ahmad Abdo</li>
+                    <li>Mohammed Ali Abdo</li>
+                    <li>Sarah Alhawash</li>
+                    <li>Abdallah Assi</li>
+                    <li>Adel Abed Jaber</li>
+                    <li>Omar Al-Khalidi</li>
+                    <li>Mariam Badwan</li>
+                    <li>Mohammed Badwan</li>
+                    <li>Fadi Cheaito</li>
+                    <li>Hassan Cheaito</li>
+                    <li>Rania El Sarji</li>
+                    <li>Nader Ghadban</li>
+                    <li>Zeinab Fakih</li>
+                    <li>Rasha Khaled Issa</li>
+                    <li>Hameed Taghelabet</li>
+
+                </ul>
+            </div>
+
+        </div>
+        <h1 class="heading">Popular Picks</h1>
+        <div class="playlists-group">
+            <div class="playlist-card" data-playlist-id="1">
+                <img src="assets/imagesaudio/alonecover.png" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Feeling Alone</p>
+            </div>
+            <div class="playlist-card" data-playlist-id="2">
+                <img src="assets/imagesaudio/anxiouscover.png" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Feeling Anxious</p>
+            </div>
+            <div class="playlist-card" data-playlist-id="3">
+                <img src="assets/imagesaudio/sadcover.png" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Feeling Sad</p>
+            </div>
+            <div class="playlist-card" data-playlist-id="4">
+                <img src="assets/imagesaudio/grievedcover.png" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Feeling Grieved</p>
+            </div>
+            <div class="playlist-card" data-playlist-id="5">
+                <img src="assets/imagesaudio/stressedcover.png" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Feeling Stressed</p>
+            </div>
+            <div class="playlist-card" data-playlist-id="6">
+                <img src="assets/imagesaudio/thankfulcover.png" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Feeling Thankful</p>
+            </div>
+        </div>
+        <h1 class="heading">Developer Picks</h1>
+        <div class="playlists-group">
+            <div class="playlist-card" data-playlist-id="7">
+                <img src="assets/imagesaudio/turncover.png" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Turn To Allah</p>
+            </div>
+            <div class="playlist-card" data-playlist-id="8">
+                <img src="assets/imagesaudio/religioncover.jpg" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Mentions of Other Religions</p>
+            </div>
+            <div class="playlist-card" style="pointer-events:none;">
+                <img src="assets/imagesaudio/soon.jpg" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Islamic Lectures</p>
+            </div>
+            <div class="playlist-card"  >
+                <img src="assets/imagesaudio/soon.jpg" class="playlist-card-img" alt="">
+                <p class="playlist-card-name">Importance of Deen</p>
+            </div>
+
+
+        </div>
+
+
+    </section>
+    <section class="quran-player-section">
+        <img src="assets/imagesaudio/nav.png" class="nav-btn icon " alt="">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon " alt="">
+        <select id="feelings-dropdown">
+            <option hidden>Choose</option>
+            <option value="alone">Alone</option>
+            <option value="anxious">Anxious</option>
+            <option value="grieved">Grieved</option>
+            <option value="religions">Mention of Other Religions</option>
+            <option value="sad">Sad</option>
+            <option value="stressed">Stressed</option>
+            <option value="thankful">Thankful</option>
+            <option value="turn">Turn Back To Allah</option>
+
+        </select>
+        <h1 class="quran-who">Ayatul Kursi</h1>
+        <p class="artist-name hide" style="margin-top: 15px;"></p>
+        <h1 class="current-quran-playlist-track"></h1>
+        <img src="" class="cover hide" alt="">
+        <div class="seek-bar-container">
+            <input type="range" class="quran-seek-bar" value="0">
+            <p class="current-time hide">00 : 00</p>
+            <p class="duration hide">00 : 00</p>
+        </div>
+        <div class="controls">
+            <span id="test" class="fa-solid fa-repeat"></span>
+            <div class="main">
+                <i style="margin-right: 20px;" class="fas fa-backward-step active"></i>
+                <i class="fas fa-play active"></i>
+                <i class="fas fa-pause"></i>
+                <i style="margin-left: 20px; " class="fas fa-forward-step active"></i>
+            </div>
+            <div class="volume-container">
+                <span id="test" class="fas fa-volume-up"></span>
+                <input type="range" class="volume-slider" max="1" value="1" step="0.1">
+            </div>
+        </div>
+        <button id="tester" class="hide">Show Info</button>
+        <div class="container-quran quran-container">
+            <h3 class="hide" style="margin-bottom: 15px;">Verse Analysis: </h3>
+            <p class="current-quran-name"></p>
+            <hr class="hide">
+            <h3 class="hide" style="margin-top: 15px;">English Translation:</h3>
+            <p class="meaning hide" style="margin-top: 15px;"></p>
+        </div>
+    </section>
+    <section class="playlist" id="playlist-1" data-playlist-id="alone">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Feeling Alone Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/a1.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Ayatul Kursi</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/a2.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">The Omniscience of Allah</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/a3.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">The Universal Guidance of the Quran</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/a4.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Seeking Divine Help in Times of Adversity</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/a5.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Allah's Constant Presence</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/a6.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">The Futility of Opposing Allah's Chosen Ones</p>
+        </div>
+    </section>
+    <section class="playlist" id="playlist-2" data-playlist-id="anxious">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Feeling Anxious Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/ax1.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Allah is the Best Protector</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/ax2.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">A Verse on the Intimate Relationship Between God and Humankind
+            </p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img  src="assets/imagesaudio/ax3.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">Allah is the Best of Planners
+            </p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img style="background-color: none;" src="assets/imagesaudio/ax4.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">Hearts find comfort in the Remembrance of Allah
+            </p>
+        </div>
+    </section>
+    <section class="playlist" id="playlist-3" data-playlist-id="sad">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Feeling Sad Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/sad1.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Steadfastness in Adversity</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/sad2.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Seeking Comfort in Patience and Prayer</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/sad3.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Trusting in Allah's Providence</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/sad4.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Seeking Forgiveness and Mercy</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/sad5.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Finding Hope in Compassion</p>
+        </div>
+    </section>
+    <section class="playlist" id="playlist-4" data-playlist-id="grieved">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Feeling Grieved Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/grieved1.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">The Omnipotence and Omniscience of Allah
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/grieved2.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">Patience in Times of Trial
+            </p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/grieved3.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">Fearless and Griefless Believers
+            </p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/grieved4.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">Not Tormenting Oneself with Grief Over Unbelievers
+            </p>
+        </div>
+    </section>
+    <section class="playlist" id="playlist-5" data-playlist-id="stressed">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Feeling Stressed Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/stressed1.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Finding comfort through patience and prayer</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/stressed2.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">The straight path: Surah Al-Fatihah</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/stressed3.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">The repentance of Prophet Yunus (A.S)</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/stressed4.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Trusting in Allah's plan</p>
+        </div>
+    </section>
+    <section class="playlist" id="playlist-6" data-playlist-id="thankful">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Feeling Thankful Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/thankful1.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Gratitude for Allah's Forgiveness and Mercy</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/thankful2.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">Blessings for the Grateful
+            </p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/thankful3.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">Gratitude and Steadfast Faith
+            </p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/thankful4.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Seeking Help through Thankfulness
+            </p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/thankful5.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">Gratitude for Divine Wisdom
+            </p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/thankful6.jpg" alt="">
+                <i class="fas fa-play"></i>
+            </div>
+            <p class="name">Appreciation of Grateful Believers
+            </p>
+        </div>
+    </section>
+
+    <section class="playlist" id="playlist-7" data-playlist-id="turn">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Turn Back To Allah Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/turncover.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Surah Maryam [19:88-92]</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/line.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Surah Al-Haqqah [69:27-32]</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/fr.png" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Allah is Al-Qadeer – (All-Powerful).</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/50-30.png" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">The Capacity of Hell on the Day of Judgment</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/20-124.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">The Consequences of Ignoring God's Reminders in the Quran</p>
+        </div>
+    </section>
+
+
+    <section class="playlist" id="playlist-8" data-playlist-id="religions">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Mentions Of Other Religions Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/or1.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Allah's Generosity and Condemnation of False Beliefs</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/or2.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Victory to the Believers</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/or3.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">The Essence of Jesus (A.S)</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/or4.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Blessings for the Righteous</p>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/or5.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Guidance and Light</p>
+        </div>
+    </section>
+
+
+    <section class="playlist" id="playlist-9" data-playlist-id="IL">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Islamic Lectures Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/a1.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Ayatul Kursi</p>
+        </div>
+    </section>
+
+
+    <section class="playlist" id="playlist-10" data-playlist-id="sv">
+        <img src="assets/imagesaudio/back.png" class="back-btn icon" alt="">
+        <div class="containers">
+            <h1 class="title">Islamic Lectures Playlist</h1>
+            <button class="play-button" style="cursor: pointer;">Play Playlist</button>
+        </div>
+        <div class="queue">
+            <div class="queue-cover">
+                <img src="assets/imagesaudio/a1.jpg" alt="">
+                <i class="fas fa-play" style="cursor: pointer;"></i>
+            </div>
+            <p class="name">Allah's Generosity and Condemnation of False Beliefs</p>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/sc.js"></script>
+    <script src="https://kit.fontawesome.com/58c091b02c.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
