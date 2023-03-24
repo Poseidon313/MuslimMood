@@ -338,15 +338,7 @@ let religions = [
   },
 ];
 
-let IL = [
-  {
-    name: "",
-    path: "",
-    artist: "",
-    meaning: "",
-    cover: "",
-  },
-];
+
 
 let verses = [
   ...alone,
@@ -454,75 +446,92 @@ navBtn.addEventListener("click", () => {
     // Determine the index of the currently playing audio
   }
 });
-
 function updateQuranWhoElement() {
   const selectedPlaylist = document.getElementById("feelings-dropdown").value;
+  
+  // Find current playlist section
+  const currentPlaylistSection = [...document.querySelectorAll("section.playlist")]
+      .find((section) => section.getAttribute("data-playlist-id") === selectedPlaylist);
 
-  const playlistSections = document.querySelectorAll("section.playlist");
-  let currentPlaylistSection = null;
-  for (let i = 0; i < playlistSections.length; i++) {
-    const section = playlistSections[i];
-    if (section.getAttribute("data-playlist-id") === selectedPlaylist) {
-      currentPlaylistSection = section;
-      break;
-    }
-  }
+  // Determine the index of the currently playing audio  
+  const currentIndex = verses.findIndex((verse) => verse.path === audioPlayer.src);
 
-  // Determine the index of the currently playing audio
-  const currentIndex = verses.findIndex(
-    (verse) => verse.path === audioPlayer.src
-  );
+   // Find the track name for the current index in the playlist 
+   const trackNameElements = currentPlaylistSection?.querySelectorAll(".queue .name");
 
-  console.log(`Current index: ${currentIndex}`);
+   if (trackNameElements && trackNameElements.length > currentIndex) {    
+     // Update text content of quran who element
+     const quranWhoElement = document.querySelector(".quran-player-section .quran-who");
+     quranWhoElement.textContent = trackNameElements[currentIndex].textContent;   
+   }
+} 
 
-  // Find the track name for the current index in the playlist
-  const trackNameElements =
-    currentPlaylistSection.querySelectorAll(".queue .name");
-  if (trackNameElements.length > currentIndex) {
-    const currentTrackName = trackNameElements[currentIndex].textContent;
-    console.log(`Current track name: ${currentTrackName}`);
-
-    // Update the text of the h1 element
-    const quranWhoElement = document.querySelector(
-      ".quran-player-section .quran-who"
-    );
-    quranWhoElement.textContent = currentTrackName;
-  }
-}
 function updatePlayer(verses, paths, index, feeling) {
   audioPlayer.src = paths[index];
   quranName.innerHTML = verses[index].name;
   artistName.innerHTML = verses[index].artist;
   coverImage.src = verses[index].cover;
   meaning.innerHTML = verses[index].meaning;
-  //hide the current active playlist section
-  const currentActiveSection = document.querySelector(
-    "section.playlist.active"
-  );
-  if (currentActiveSection) {
-    currentActiveSection.classList.remove("active");
-  }
+  
   const feelingDropdown = document.querySelector("#feelings-dropdown");
-  //grab the value of the feeling dropdown
   feelingDropdown.value = feeling;
   pauseBtn.classList.add("active");
   playBtn.classList.remove("active");
   updateQuranWhoElement();
+
   audioPlayer.play();
-
-
 }
 
 
-audioPlayer.addEventListener("ended", function () {
-  const currentIndex = verses.findIndex(
-    (verse) => verse.path === audioPlayer.src
-  );
+function playNextTrack() {
+  let currentIndex = verses.findIndex((verse) => verse.path === audioPlayer.src);
+  console.log("Current index end : " + currentIndex);
+  //get the next track index
+  let nextIndex = currentIndex + 1;
 
-  const paths = verses.map((verse) => verse.path);
-  const nextIndex = (currentIndex + 1) % paths.length;
-  updatePlayer(verses, paths, nextIndex, feelingsDropdown.value);
+  //if the next track index is greater than the number of tracks, reset the index to 0
+  if (nextIndex >= verses.length) {
+    nextIndex = 0;
+  }
+
+  const nextTrackPath = verses[nextIndex].path;
+  console.log("Next track path: " + nextTrackPath);
+  audioPlayer.src = nextTrackPath;
+  quranName.innerHTML = verses[nextIndex].name;
+  artistName.innerHTML = verses[nextIndex].artist;
+  coverImage.src = verses[nextIndex].cover;
+  meaning.innerHTML = verses[nextIndex].meaning;
+  audioPlayer.play();
+}
+
+audioPlayer.addEventListener("ended", () => {
+  console.log("Audio playback ended.");
+
+  setTimeout(() => {
+    updateQuranWhoElement();
+  }, 1);
+
+  playNextTrack();
 });
+
+const sadPaths = sad.map((verse) => verse.path);
+const queues3 = document.querySelectorAll("#playlist-3 .queue");
+
+queues3.forEach((queue, index) => {
+  queue.addEventListener("click", () => {
+    verses = sad;
+    const currentActiveSection = document.querySelector(
+      "section.playlist.active"
+    );
+    if (currentActiveSection) {
+      currentActiveSection.classList.remove("active");
+    }
+    console.log("Current click index: " + index  );
+    updatePlayer(verses, sadPaths, index, "sad");
+  });
+});
+
+
 
 const alonePaths = alone.map((verse) => verse.path);
 const queues1 = document.querySelectorAll("#playlist-1 .queue");
@@ -530,7 +539,11 @@ const queues1 = document.querySelectorAll("#playlist-1 .queue");
 queues1.forEach((queue, index) => {
   queue.addEventListener("click", () => {
     verses = alone;
-
+    const currentActiveSection = document.querySelector("section.playlist.active");
+    if (currentActiveSection) {
+      currentActiveSection.classList.remove("active");
+    }
+    
     updatePlayer(verses, alonePaths, index, "alone");
   });
 });
@@ -540,32 +553,49 @@ const queues2 = document.querySelectorAll("#playlist-2 .queue");
 
 queues2.forEach((queue, index) => {
   queue.addEventListener("click", () => {
-    if (anxious && anxious.length > index) {
-      verses = anxious;
-      updatePlayer(verses, anxiousPaths, index, "anxious");
+    verses = anxious;
+    const currentActiveSection = document.querySelector(
+      "section.playlist.active"
+    );
+    if (currentActiveSection) {
+      currentActiveSection.classList.remove("active");
     }
+    updatePlayer(verses, anxiousPaths, index, "anxious");
   });
 });
 
-const sadPaths = sad.map((verse) => verse.path);
-const queues3 = document.querySelectorAll("#playlist-3 .queue");
 
-queues3.forEach((queue, index) => {
-  queue.addEventListener("click", () => {
-    verses = sad;
-    updatePlayer(verses, sadPaths, index, "sad");
-  });
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const grievedpaths = grieved.map((verse) => verse.path);
 const queues4 = document.querySelectorAll("#playlist-4 .queue");
 
 queues4.forEach((queue, index) => {
   queue.addEventListener("click", () => {
-    if (grieved && grieved.length > index) {
-      verses = grieved;
-      updatePlayer(verses, grievedpaths, index, "grieved");
+    verses = grieved;
+    const currentActiveSection = document.querySelector(
+      "section.playlist.active"
+    );
+    if (currentActiveSection) {
+      currentActiveSection.classList.remove("active");
     }
+    updatePlayer(verses, grievedpaths, index, "grieved");
   });
 });
 
@@ -574,22 +604,29 @@ const queues5 = document.querySelectorAll("#playlist-5 .queue");
 
 queues5.forEach((queue, index) => {
   queue.addEventListener("click", () => {
-    if (stressedPaths && stressedPaths.length > index) {
-      verses = stressed;
-      updatePlayer(verses, stressedPaths, index, "stressed");
+    verses = stressed;
+    const currentActiveSection = document.querySelector(
+      "section.playlist.active"
+    );
+    if (currentActiveSection) {
+      currentActiveSection.classList.remove("active");
     }
+    updatePlayer(verses, stressedPaths, index, "stressed");
   });
 });
-
 const thankfulPaths = thankful.map((verse) => verse.path);
 const queues6 = document.querySelectorAll("#playlist-6 .queue");
 
 queues6.forEach((queue, index) => {
   queue.addEventListener("click", () => {
-    if (thankfulPaths && thankfulPaths.length > index) {
-      verses = thankful;
-      updatePlayer(verses, thankfulPaths, index, "thankful");
+    verses = thankful;
+    const currentActiveSection = document.querySelector(
+      "section.playlist.active"
+    );
+    if (currentActiveSection) {
+      currentActiveSection.classList.remove("active");
     }
+    updatePlayer(verses, thankfulPaths, index, "thankful");
   });
 });
 
@@ -598,10 +635,14 @@ const queues7 = document.querySelectorAll("#playlist-7 .queue");
 
 queues7.forEach((queue, index) => {
   queue.addEventListener("click", () => {
-    if (turnPaths && turnPaths.length > index) {
-      verses = turn;
-      updatePlayer(verses, turnPaths, index, "turn");
+    verses = turn;
+    const currentActiveSection = document.querySelector(
+      "section.playlist.active"
+    );
+    if (currentActiveSection) {
+      currentActiveSection.classList.remove("active");
     }
+    updatePlayer(verses, turnPaths, index, "turn");
   });
 });
 
@@ -612,6 +653,12 @@ queues8.forEach((queue, index) => {
   queue.addEventListener("click", () => {
     if (religionsPath && religionsPath.length > index) {
       verses = religions;
+      const currentActiveSection = document.querySelector(
+        "section.playlist.active"
+      );
+      if (currentActiveSection) {
+        currentActiveSection.classList.remove("active");
+      }
       updatePlayer(verses, religionsPath, index, "religions");
     }
   });
@@ -754,11 +801,11 @@ function togglePlayPause() {
 }
 function updateProgressBar() {
   seekBar.value = Math.floor(audioPlayer.currentTime);
-  const minutes = Math.floor(audioPlayer.currentTime / 60);
-  const seconds = Math.floor(audioPlayer.currentTime % 60);
-  currentquranTime.innerHTML = `${minutes}:${
-    seconds < 10 ? "0" : ""
-  }${seconds}`;
+  const minutes = Math.floor(audioPlayer.currentTime / 60); 
+  const seconds = Math.floor(audioPlayer.currentTime % 60);  
+  currentquranTime.innerHTML = `${minutes}:${ 
+    seconds < 10 ? "0" : "" 
+  }${seconds}`; 
 
   if (!isNaN(audioPlayer.duration)) {
     seekBar.max = Math.floor(audioPlayer.duration);
@@ -769,7 +816,7 @@ function updateProgressBar() {
     }${durationSeconds}`;
 
     // Check if the audio track has reached the end
-    if (audioPlayer.currentTime >= audioPlayer.duration - 0.1) {
+    if (audioPlayer.currentTime >= audioPlayer.duration) {
       // Reset the current time to the beginning of the track
       audioPlayer.currentTime = 0;
       // Reset the progress bar value to 0
@@ -903,7 +950,6 @@ playButtons.forEach((button) => {
     // Set the playlist id as a data attribute of the button
     button.setAttribute("data-playlist-id", playlistId);
 
-    // Log the playlist id of the playlist section
 
     if (playlistSection.dataset.playlistId === "alone") {
       verses = alone;
