@@ -485,7 +485,6 @@ function updatePlayer(verses, paths, index, feeling) {
 
 function playNextTrack() {
   let currentIndex = verses.findIndex((verse) => verse.path === audioPlayer.src);
-  console.log("Current index end : " + currentIndex);
   //get the next track index
   let nextIndex = currentIndex + 1;
 
@@ -495,7 +494,6 @@ function playNextTrack() {
   }
 
   const nextTrackPath = verses[nextIndex].path;
-  console.log("Next track path: " + nextTrackPath);
   audioPlayer.src = nextTrackPath;
   quranName.innerHTML = verses[nextIndex].name;
   artistName.innerHTML = verses[nextIndex].artist;
@@ -505,7 +503,6 @@ function playNextTrack() {
 }
 
 audioPlayer.addEventListener("ended", () => {
-  console.log("Audio playback ended.");
 
   setTimeout(() => {
     updateQuranWhoElement();
@@ -526,7 +523,6 @@ queues3.forEach((queue, index) => {
     if (currentActiveSection) {
       currentActiveSection.classList.remove("active");
     }
-    console.log("Current click index: " + index  );
     updatePlayer(verses, sadPaths, index, "sad");
   });
 });
